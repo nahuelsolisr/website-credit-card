@@ -15,6 +15,45 @@
         <div class="card">
           <div class="card-body">
             <h5 class="titulo">AGREGAR TARJETA</h5>
+            <form [formGroup]="form" (ngSubmit)="agregarTarjeta()">
+              <div class="input-group input-group-lg mb-3">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+                <input formControlName="titular" type="text" class="form-control" placeholder="Titular">
+              </div>
+              <div class="input-group input-group-lg mb-3">
+                <span class="input-group-text">
+                  <i class="fa-solid fa-credit-card"></i>
+                </span>
+                <input  formControlName="numeroTarjeta" type="text" class="form-control" placeholder="Número de tarjeta">
+              </div>
+
+              <div class="row">
+                <div class="col-lg-7">
+                  <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-calendar"></i>
+                    </span>
+                    <input formControlName="fechaExpiracion"  type="text" class="form-control" placeholder="MM/YY">
+                  </div>
+                  
+                </div>
+                <div class="col-lg-5">
+                  <div class="input-group input-group-lg mb-3">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-key"></i>
+                    </span>
+                    <input formControlName="cvv"  type="password" class="form-control" placeholder="CVV">
+                  </div>
+                </div>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success btn-lg">
+                  <i class="fa-solid fa-share"></i>&nbsp; Enviar
+                </button>
+              </div>           
+            </form>
           </div>
         </div>
       </div>
@@ -25,7 +64,7 @@
             <table class="table">
               <tbody>
                 <tr *ngFor="let tarjeta of listTarjetas">
-                  <td>{{tarjeta.titulo}}</td>
+                  <td>{{tarjeta.titular}}</td>
                   <td>{{tarjeta.numeroTarjeta}}</td>
                   <td>{{tarjeta.fechaExpiracion}}</td>
                   <td><i class="fa-solid fa-pen-to-square text-info"></i></td>

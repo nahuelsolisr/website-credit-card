@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    ReactiveFormsModule 
+
   ],
   providers: [],
   bootstrap: [AppComponent]
