@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-credit-card',
@@ -8,6 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreditCardComponent {
 
+  eliminarTarjeta(index: number ){
+     this.listTarjetas.splice(index,1)
+     this.toastr.error('La tarjeta fue eliminada exitosamente', 'Tarjeta Eliminada');
+  }
   agregarTarjeta(){
     console.log(this.form)
 
@@ -20,6 +25,7 @@ export class CreditCardComponent {
     }
 
     this.listTarjetas.push(tarjeta)
+    this.toastr.success('La tarjeta fue registrada exitosamente', 'Tarjeta Registrada');
     this.form.reset();
     }
 
@@ -41,7 +47,8 @@ export class CreditCardComponent {
 
  form: FormGroup;
 
- constructor(private fb: FormBuilder){
+ constructor(private fb: FormBuilder,
+  private toastr: ToastrService){
   this.form = this.fb.group({
     titular:['',Validators.required],
     numeroTarjeta:['',[Validators.required,Validators.maxLength(16),Validators.minLength(16),]],
